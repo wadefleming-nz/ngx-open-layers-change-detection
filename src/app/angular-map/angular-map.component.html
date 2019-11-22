@@ -1,0 +1,40 @@
+Angular Map
+<aol-map [width]="'800px'" [height]="'800px'">
+	<aol-interaction-default></aol-interaction-default>
+	<aol-view [zoom]="'5'">
+		<aol-coordinate [x]="0.0" [y]="52.0" [srid]="'EPSG:4326'"></aol-coordinate>
+	</aol-view>
+	<aol-layer-tile>
+		<aol-source-osm></aol-source-osm>
+	</aol-layer-tile>
+	<aol-layer-vector>
+		<aol-source-vector>
+			<aol-feature *ngFor="let s of stops1">
+				<aol-geometry-point>
+					<aol-coordinate [x]="s.longitude" [y]="s.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
+				</aol-geometry-point>
+			</aol-feature>
+		</aol-source-vector>
+		<aol-style>
+			<aol-style-circle radius="5">
+				<aol-style-stroke [color]="'#0000ff'" width="3"></aol-style-stroke>
+				<aol-style-fill color="#fff"></aol-style-fill>
+			</aol-style-circle>
+		</aol-style>
+	</aol-layer-vector>
+  <aol-layer-vector>
+		<aol-source-vector>
+			<aol-feature *ngFor="let s of stops2">
+				<aol-geometry-point>
+					<aol-coordinate [x]="s.longitude" [y]="s.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
+				</aol-geometry-point>
+			</aol-feature>
+		</aol-source-vector>
+		<aol-style>
+			<aol-style-circle radius="5">
+				<aol-style-stroke [color]="'#fff00'" width="3"></aol-style-stroke>
+				<aol-style-fill color="#fff"></aol-style-fill>
+			</aol-style-circle>
+		</aol-style>
+	</aol-layer-vector>
+</aol-map>
